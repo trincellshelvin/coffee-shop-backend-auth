@@ -60,3 +60,44 @@ Include the body json raw with the necessary details to be changed. In this one,
 Use Delete from the postman drop down with the following link to delete an item from your database: http://localhost:3000/products/6760fbab9515593fb4c72220. As before, you will need to get the product ID from the document entry from the database. 
 ![MongoDB Deleted Product](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734411959/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-16_230542_rptfv0.png)
 ![Postman Deleted Product](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734411960/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-16_230515_virmwq.png)
+
+# Users...
+## POST Register User
+Use the below to setup the user registrations as outlined.
+
+Method: POST
+URL: http://localhost:3000/auth/register
+Body: JSON
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "role": "user"
+}
+
+![Post Register User](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734488651/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-17_202343_rrgphn.png)
+
+## Login a User:
+
+Use the below to login a user and make sure to copy the token response received for the next testing step.
+
+Method: POST
+URL: http://localhost:3000/auth/login
+Body: JSON
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+![POST Login User](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734489336/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-17_203519_dfgosh.png)
+
+# Access Protected Product Routes:
+
+Use the below outline and link with the login token created with the previous login response. Don't forget to assign a header to this request with authorization being the key and the value being the words Bearer and that copied token from the login response. 
+
+Method: GET
+URL: http://localhost:3000/products
+Header:
+Authorization: Bearer <your_jwt_token>
+
+![Product Route Request](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734489727/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-17_204146_wt7qtx.png)
