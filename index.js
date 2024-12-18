@@ -30,7 +30,7 @@ mongoose
 
 
 // Use the product and auth routes
-app.use('/products', productRoutes);
+//app.use('/products', productRoutes);
 app.use('/auth', authRoutes);
 
 // Protect product routes
