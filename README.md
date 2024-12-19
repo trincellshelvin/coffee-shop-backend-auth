@@ -89,9 +89,12 @@ Body: JSON
   "password": "password123"
 }
 
-![POST Login User](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734489336/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-17_203519_dfgosh.png)
+![POST Login User](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734489336/CoffeeShopBackendTestsScreenshots/
+Screenshot_2024-12-17_203519_dfgosh.png)
 
-# Access Protected Product Routes:
+# Admin Processes.....
+
+## ccess Protected Product Routes:
 
 Use the below outline and link with the login token created with the previous login response. Don't forget to assign a header to this request with authorization being the key and the value being the words Bearer and that copied token from the login response. 
 
@@ -101,3 +104,124 @@ Header:
 Authorization: Bearer <your_jwt_token>
 
 ![Product Route Request](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734489727/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-17_204146_wt7qtx.png)
+
+# Get All Users (Admin Only):
+
+In the admin role, use this token in the header to be able to complete the getting of the users. If the profile for the admin has not be created nor logged into yet, please create an admin profile. Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+Method: GET
+URL: http://localhost:3000/users
+Header:
+Authorization: Bearer <admin_jwt_token>
+
+![Create Admin User Postman](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573287/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_194938_jjuaha.png)
+![Login Admin User Postman](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573289/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_195033_lsevb8.png)
+![Created Admin User MongoDB](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573287/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_195421_ogvouu.png)
+![Admin Get All Users](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573287/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_195250_dnmwc9.png)
+
+# Get a Single User by ID:
+
+To retrieve a single user by ID. Use the below to test in postman if you are able to get to them. 
+
+Method: GET
+URL: http://localhost:3000/users/<user_id>
+Header:
+Authorization: Bearer <user_jwt_token>
+
+User ID: 67623217fe866f3cd0f081b7
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+![Get a Single User Admin Only](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573926/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_200342_nlgcza.png)
+
+# Update a User by ID:
+
+Use the below to update a user via Admin in postman.
+
+Method: PUT
+URL: http://localhost:3000/users/<user_id>
+Header:
+Authorization: Bearer <user_jwt_token>
+Body: JSON
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com"
+}
+
+User ID: 6763805443e72d86449b919c
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+![User as Registered MongoDB](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574610/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_201415_xqjy1t.png)
+![User Updated MongoDB](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574610/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_201441_s2ld6z.png)
+![Put Update User Postman](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574610/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_201605_g5cty3.png)
+
+# Delete a User by ID (Admin Only):
+
+Use the below to delete the user by ID using the Admin.
+
+Method: DELETE
+URL: http://localhost:3000/users/<user_id>
+Header:
+Authorization: Bearer <admin_jwt_token>
+
+User ID: 6763805443e72d86449b919c
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+![Admin Delete User by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574870/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_202040_esefgd.png)
+
+# Get All Products or Filter by Category:
+
+Method: GET
+URL: http://localhost:3000/products?category=mugs
+
+![Get All Products](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734575576/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_203201_lb54rd.png)
+
+# Get a Single Product by ID:
+
+Admin login token will be needed for this process. Use the below to retrieve the product via ID.
+
+Method: GET
+URL: http://localhost:3000/products/<product_id>
+
+Product ID: 6763853f43e72d86449b91a1
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+![Get Product by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734576079/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_204108_e8ndid.png)
+
+# Update a Product by ID:
+
+Follow the steps below and make sure to have the login token for it to work properly for authentication.
+
+Method: PUT
+URL: http://localhost:3000/products/<product_id>
+Body: JSON
+{
+  "name": "Large Coffee Mug",
+  "description": "A large coffee mug, perfect for your morning coffee.",
+  "price": 14.99,
+  "category": "mugs",
+  "stock": 60,
+  "imageUrl": "http://example.com/mug.jpg"
+}
+
+Product ID: 6763853f43e72d86449b91a1
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+![Admin Update Product by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734576369/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_204552_xc5l2n.png)
+
+# Delete a Product by ID:
+
+Follow the steps below and make sure to have the login token for it to work properly for authentication.
+
+Method: DELETE
+URL: http://localhost:3000/products/<product_id>
+
+Product ID: 6763853f43e72d86449b91a1
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
+
+![Admin Delete Product by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734576635/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_204955_sorifb.png)

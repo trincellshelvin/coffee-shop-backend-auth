@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
 const auth = require('./middleware/auth');
+const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
 
@@ -32,9 +34,11 @@ mongoose
 // Use the product and auth routes
 //app.use('/products', productRoutes);
 app.use('/auth', authRoutes);
+app.use('/users', auth, userRoutes);
 
 // Protect product routes
 app.use('/products', auth, productRoutes);
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
