@@ -10,7 +10,7 @@
 - npm init -y
 - npm install express mongoose
 - code . to open vscode
-- npm i gitignoew
+- npm i gitignore
 - npm install --save-dev nodemon
 - npm i express-rate-limit
 - Make sure that "scripts": {"start": "node index.js", "dev": "nodemon index.js"} are in the package.json file or the server will not start. 
