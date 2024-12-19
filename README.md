@@ -94,7 +94,7 @@ Screenshot_2024-12-17_203519_dfgosh.png)
 
 # Admin Processes.....
 
-## ccess Protected Product Routes:
+## Access Protected Product Routes:
 
 Use the below outline and link with the login token created with the previous login response. Don't forget to assign a header to this request with authorization being the key and the value being the words Bearer and that copied token from the login response. 
 
@@ -105,7 +105,7 @@ Authorization: Bearer <your_jwt_token>
 
 ![Product Route Request](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734489727/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-17_204146_wt7qtx.png)
 
-# Get All Users (Admin Only):
+## Get All Users (Admin Only):
 
 In the admin role, use this token in the header to be able to complete the getting of the users. If the profile for the admin has not be created nor logged into yet, please create an admin profile. Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
 
@@ -119,7 +119,7 @@ Authorization: Bearer <admin_jwt_token>
 ![Created Admin User MongoDB](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573287/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_195421_ogvouu.png)
 ![Admin Get All Users](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573287/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_195250_dnmwc9.png)
 
-# Get a Single User by ID:
+## Get a Single User by ID:
 
 To retrieve a single user by ID. Use the below to test in postman if you are able to get to them. 
 
@@ -134,7 +134,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2
 
 ![Get a Single User Admin Only](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734573926/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_200342_nlgcza.png)
 
-# Update a User by ID:
+## Update a User by ID:
 
 Use the below to update a user via Admin in postman.
 
@@ -156,7 +156,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2
 ![User Updated MongoDB](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574610/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_201441_s2ld6z.png)
 ![Put Update User Postman](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574610/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_201605_g5cty3.png)
 
-# Delete a User by ID (Admin Only):
+## Delete a User by ID (Admin Only):
 
 Use the below to delete the user by ID using the Admin.
 
@@ -171,14 +171,17 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2
 
 ![Admin Delete User by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734574870/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_202040_esefgd.png)
 
-# Get All Products or Filter by Category:
+## Get All Products or Filter by Category:
+
+Have the category in mind that you would like to get all of the products for. <category> is to be replaced in the link with the category name. 
 
 Method: GET
-URL: http://localhost:3000/products?category=mugs
+Category: Mugs
+URL: http://localhost:3000/products?category=<category>
 
 ![Get All Products](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734575576/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_203201_lb54rd.png)
 
-# Get a Single Product by ID:
+## Get a Single Product by ID:
 
 Admin login token will be needed for this process. Use the below to retrieve the product via ID.
 
@@ -191,7 +194,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2
 
 ![Get Product by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734576079/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_204108_e8ndid.png)
 
-# Update a Product by ID:
+## Update a Product by ID:
 
 Follow the steps below and make sure to have the login token for it to work properly for authentication.
 
@@ -213,7 +216,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2
 
 ![Admin Update Product by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734576369/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_204552_xc5l2n.png)
 
-# Delete a Product by ID:
+## Delete a Product by ID:
 
 Follow the steps below and make sure to have the login token for it to work properly for authentication.
 
