@@ -23,10 +23,21 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const { category } = req.query;
+        const {
+            page = 1,
+            limit = 10,
+            category,
+            sortBy,
+            sortOrder = 'asc',
+        } = req.query;
         const filter = category ? { category } : {};
-        const products = await Product.find(filter);
-        res.json(products);
+        const sort = sortBy ? { [sortBy]: sortOrder === 'asc' ? 1 : -1 } : {};
+        const products = await Product.find(filter)
+            .sort(sort)
+            .limit(parseInt(limit))
+            .skip((page - 1) * limit);
+        const total = await Product.countDocuments(filter);
+        res.json({ total, products });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
