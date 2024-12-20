@@ -7,7 +7,7 @@ const { validateProduct } = require('../middleware/validate');
 const router = express.Router();
 
 
-router.post('/', auth, role('admin'), upload, validateProduct, async (req, res) => {
+router.post('/', auth, role('admin'), upload.single('image'), validateProduct, async (req, res) => {
     try {
         const { name, description, price, category, stock } = req.body;
         const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
@@ -79,7 +79,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a product by ID
-router.put('/:id', auth, role('admin'), upload, validateProduct, async (req, res) => {
+router.put('/:id', auth, role('admin'), upload.single('image'), validateProduct, async (req, res) => {
     try {
         const { name, description, price, category, stock } = req.body;
         const imageUrl = req.file
