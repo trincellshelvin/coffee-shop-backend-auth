@@ -1,11 +1,12 @@
 const express = require('express');
 const Product = require('../models/products');
 const upload = require('../middleware/upload');
-const multer = require('multer');
+const role = require('./middleware/roles');
+const { validateProduct} = require('../middleware/validate');
 const router = express.Router();
 
 // Create a new product
-router.post('/', upload, async (req, res) => {
+router.post('/', auth, role('admin'), upload, async (req, res) => {
     try {
         const { name, description, price, category, stock } = req.body;
         const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
