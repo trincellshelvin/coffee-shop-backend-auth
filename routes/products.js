@@ -1,12 +1,13 @@
 const express = require('express');
 const Product = require('../models/products');
 const upload = require('../middleware/upload');
-const role = require('./middleware/roles');
-const { validateProduct} = require('../middleware/validate');
+const auth = require('../middleware/auth');
+const role = require('../middleware/roles');
+const { validateProduct } = require('../middleware/validate');
 const router = express.Router();
 
-// Create a new product
-router.post('/', auth, role('admin'), upload, async (req, res) => {
+
+router.post('/', auth, role('admin'), upload, validateProduct, async (req, res) => {
     try {
         const { name, description, price, category, stock } = req.body;
         const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
@@ -34,7 +35,7 @@ router.get('/', async (req, res) => {
             sortBy = 'createdAt',
             sortOrder = 'asc'
         } = req.query;
-        
+
         // Build the filter object based on query parameters
         const filter = {};
         if (category) {
@@ -78,7 +79,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a product by ID
-router.put('/:id', upload, async (req, res) => {
+router.put('/:id', auth, role('admin'), upload, validateProduct, async (req, res) => {
     try {
         const { name, description, price, category, stock } = req.body;
         const imageUrl = req.file
@@ -99,7 +100,7 @@ router.put('/:id', upload, async (req, res) => {
 });
 
 // Delete a product by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, role('admin'), async (req, res) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete(req.params.id);
         if (!deletedProduct) {

@@ -6,8 +6,8 @@ const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const auth = require('./middleware/auth');
-const roles = require('./middleware/roles'); 
-const validate = require('./middleware/validate');
+const role = require('./middleware/roles'); 
+const {validateProduct} = require('./middleware/validate');
 const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
@@ -40,10 +40,10 @@ mongoose
 // Use the product and auth routes
 //app.use('/products', productRoutes);
 app.use('/auth', authRoutes);
-app.use('/users', auth, userRoutes);
+app.use('/users', auth, role('admin'), userRoutes);
 
 // Protect product routes
-app.use('/products', auth, roles, validate, productRoutes);
+app.use('/products', auth, role('admin'), validateProduct, productRoutes);
 app.use(errorHandler);
 
 app.listen(port, () => {
