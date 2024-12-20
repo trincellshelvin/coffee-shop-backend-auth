@@ -228,3 +228,34 @@ Product ID: 6763853f43e72d86449b91a1
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ1NzMwMTAsImV4cCI6MTczNDU3NjYxMH0.6wYteEv9M9id0IUJn1d8oF35JUHFdLwSKgOszQMLcrc
 
 ![Admin Delete Product by ID](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734576635/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-18_204955_sorifb.png)
+
+## Create a Product with Image Upload:
+
+Method: POST
+URL: http://localhost:3000/products
+Headers:
+Authorization: Bearer <your_jwt_token>
+Body: Form Data
+
+{
+    "name": "Fur Parent Mug",
+    "description": "Now Fur Parents can Unite",
+    "price": 14.99,
+    "category": "mug",
+    "stock": 100,
+    "imageUrl": "/uploads/image-1734663429989.webp",
+    "_id": "6764dd06bd2fb18593b05685",
+    "__v": 0
+}
+![MongoDB Entry](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734664819/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-19_211218_iz5uoj.png)
+![Postman Put Product with Image](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734664819/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-19_211233_ffhtr8.png)
+
+## Get All Products with Pagination and Filtering:
+Follow the steps below to pull the product via pagination, filtering, and sorting. 
+
+Method: GET
+URL: http://localhost:3000/products?page=1&limit=10&category=mug&sortBy=price&sortOrder=asc
+
+Just in case Auth Header Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ2NjMwODEsImV4cCI6MTczNDY2NjY4MX0.VmdeVSa-y7oLlvschLk29fHLR3eIAQf2e5Ga388oncU
+
+![Filtered Results](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734666326/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-19_214340_tcm0lu.png)

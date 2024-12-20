@@ -24,28 +24,44 @@ router.post('/', upload, async (req, res) => {
     }
 });
 
-// List products with pagination, filtering, and sorting
 router.get('/', async (req, res) => {
     try {
         const {
             page = 1,
             limit = 10,
             category,
-            sortBy,
-            sortOrder = 'asc',
+            sortBy = 'createdAt',
+            sortOrder = 'asc'
         } = req.query;
-        const filter = category ? { category } : {};
-        const sort = sortBy ? { [sortBy]: sortOrder === 'asc' ? 1 : -1 } : {};
+        
+        // Build the filter object based on query parameters
+        const filter = {};
+        if (category) {
+            filter.category = category;
+        }
+
+        // Define sorting order
+        const sort = {};
+        if (sortBy) {
+            sort[sortBy] = sortOrder === 'asc' ? 1 : -1;
+        }
+
+        // Find products with filtering, sorting, and pagination
         const products = await Product.find(filter)
             .sort(sort)
             .limit(parseInt(limit))
-            .skip((page - 1) * limit);
+            .skip((parseInt(page) - 1) * limit);
+
+        // Count total documents for pagination
         const total = await Product.countDocuments(filter);
+
+        // Send response
         res.json({ total, products });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
+
 
 // Get a single product by ID
 router.get('/:id', async (req, res) => {
