@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const dotenv = require('dotenv');
 const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
@@ -16,6 +17,9 @@ const port = 3000;
 app.use(express.json());
 
 const mongoURL = process.env.MONGO_URL;
+
+// Serve static files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB
 mongoose

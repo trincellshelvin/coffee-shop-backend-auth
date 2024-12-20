@@ -1,12 +1,15 @@
 const express = require('express');
 const Product = require('../models/products');
+const upload = require('../middleware/upload');
+const multer = require('multer');
 const router = express.Router();
 
-
-router.post('/', async (req, res) => {
+// Create a new product
+router.post('/', upload, async (req, res) => {
     try {
-        const { name, description, price, category, stock, imageUrl } = req.body;
-        const newProduct = new Product({
+        const { name, description, price, category, stock } = req.body;
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
+        const product = new Product({
             name,
             description,
             price,
@@ -14,13 +17,14 @@ router.post('/', async (req, res) => {
             stock,
             imageUrl,
         });
-        const savedProduct = await newProduct.save();
-        res.status(201).json(savedProduct);
+        await product.save();
+        res.status(201).json(product);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 });
 
+// List products with pagination, filtering, and sorting
 router.get('/', async (req, res) => {
     try {
         const {
@@ -43,15 +47,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
-    try {
-        const products = await Product.find();
-        res.status(200).json(products);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-
+// Get a single product by ID
 router.get('/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -64,22 +60,28 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+// Update a product by ID
+router.put('/:id', upload, async (req, res) => {
     try {
-        const { name, description, price, category, stock, imageUrl } = req.body;
-        const updatedProduct = await Product.findByIdAndUpdate(
+        const { name, description, price, category, stock } = req.body;
+        const imageUrl = req.file
+            ? `/uploads/${req.file.filename}`
+            : req.body.imageUrl;
+        const product = await Product.findByIdAndUpdate(
             req.params.id,
             { name, description, price, category, stock, imageUrl },
             { new: true, runValidators: true }
         );
-        if (!updatedProduct) {
-            return res.status(404).json({ message: 'Product not found' });
-        } res.status(200).json(updatedProduct);
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.json(product);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 });
 
+// Delete a product by ID
 router.delete('/:id', async (req, res) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete(req.params.id);
