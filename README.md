@@ -260,10 +260,10 @@ Just in case Auth Header Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQ
 
 ![Filtered Results](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734666326/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-19_214340_tcm0lu.png)
 
-# Rendered Application
+# Rendered Application (render.com)
 
 ## Login Admin User
 
-Use this link within postman to login: https://coffee-shop-backend-auth.onrender.com/auth/login
+Use this link within postman to login: https://coffee-shop-backend-auth.onrender.com/auth/login. You will need the login details for the admin to complete this process.
 
 ![Admin Login](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734800716/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-21_110432_milwu6.png)
