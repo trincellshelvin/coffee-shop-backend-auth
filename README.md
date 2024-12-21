@@ -274,3 +274,9 @@ Use this link to post documents to the MongoDB: https://coffee-shop-backend-auth
 name, description, price, category, stock, and image. With all fields required except for the stock and image. Image will come from upload of the image from your storage.
 
 ![Admin Add Product](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734805970/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-21_121721_bahxjf.png)
+
+## Get All Products
+
+Use this link to post documents to the MongoDB: https://coffee-shop-backend-auth.onrender.com/products. You will need the Bearer token received from the admin login.
+
+![Admin Get All Product Render](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734806186/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-21_123538_qis6yu.png)
