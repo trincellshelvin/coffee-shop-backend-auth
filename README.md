@@ -259,3 +259,11 @@ URL: http://localhost:3000/products?page=1&limit=10&category=mug&sortBy=price&so
 Just in case Auth Header Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzYzN2JhNTQzZTcyZDg2NDQ5YjkxOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzQ2NjMwODEsImV4cCI6MTczNDY2NjY4MX0.VmdeVSa-y7oLlvschLk29fHLR3eIAQf2e5Ga388oncU
 
 ![Filtered Results](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734666326/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-19_214340_tcm0lu.png)
+
+# Rendered Application
+
+## Login Admin User
+
+Use this link within postman to login: https://coffee-shop-backend-auth.onrender.com/auth/login
+
+![Admin Login](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734800716/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-21_110432_milwu6.png)
