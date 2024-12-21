@@ -260,10 +260,17 @@ Just in case Auth Header Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQ
 
 ![Filtered Results](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734666326/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-19_214340_tcm0lu.png)
 
-# Rendered Application (render.com)
+# Rendered Application (render.com) Admin Tasks
 
 ## Login Admin User
 
 Use this link within postman to login: https://coffee-shop-backend-auth.onrender.com/auth/login. You will need the login details for the admin to complete this process.
 
 ![Admin Login](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734800716/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-21_110432_milwu6.png)
+
+## Add Product to Database
+
+Use this link to post documents to the MongoDB: https://coffee-shop-backend-auth.onrender.com/products. You will need the Bearer token received from the admin login. The following details about the post will be needed in the body as form-data...
+name, description, price, category, stock, and image. With all fields required except for the stock and image. Image will come from upload of the image from your storage.
+
+![Admin Add Product](https://res.cloudinary.com/dgls7u3iq/image/upload/v1734805970/CoffeeShopBackendTestsScreenshots/Screenshot_2024-12-21_121721_bahxjf.png)
