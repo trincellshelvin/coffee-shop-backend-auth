@@ -20,7 +20,9 @@ app.use(express.json());
 const mongoURL = process.env.MONGO_URL;
 
 // Serve static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static('/tmp'));
+
 
 // Connect to MongoDB
 mongoose
