@@ -7,7 +7,6 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const auth = require('./middleware/auth');
 const role = require('./middleware/roles'); 
-const {validateProduct} = require('./middleware/validate');
 const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
@@ -43,7 +42,7 @@ app.use('/auth', authRoutes);
 app.use('/users', auth, role('admin'), userRoutes);
 
 // Protect product routes
-app.use('/products', auth, role('admin'), validateProduct, productRoutes);
+app.use('/products', auth, role('admin'), productRoutes);
 app.use(errorHandler);
 
 app.listen(port, () => {
