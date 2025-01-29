@@ -44,7 +44,7 @@ app.use('/auth', authRoutes);
 app.use('/users', auth, role('admin'), userRoutes);
 
 // Protect product routes
-app.use('/products', auth, role('admin'), productRoutes);
+app.use('/products', productRoutes);
 app.use(errorHandler);
 
 app.listen(port, () => {
